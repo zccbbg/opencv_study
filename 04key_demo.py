@@ -1,7 +1,7 @@
 import cv2 as cv
 import numpy as np
 '''
-调整图像对比度
+键盘响应操作
 '''
 def nothing(x):
     print(x)

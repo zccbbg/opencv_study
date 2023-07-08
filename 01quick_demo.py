@@ -1,6 +1,9 @@
 import cv2 as cv
 import numpy as np
 
+'''
+图像色彩空间转换
+'''
 def color_space_demo():
     image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
     gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
@@ -11,6 +14,9 @@ def color_space_demo():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
+'''
+图像对象的创建
+'''
 def mat_demo1():
     image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
     print(image.shape)
@@ -20,6 +26,9 @@ def mat_demo1():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
+'''
+图像对象的赋值
+'''
 def mat_demo2():
     image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
     print(image.shape)
@@ -31,6 +40,9 @@ def mat_demo2():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
+'''
+图像像素的读写操作
+'''
 def pixel_demo():
     image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
     cv.imshow("input",image)
@@ -43,6 +55,9 @@ def pixel_demo():
     cv.waitKey(0)
     cv.destroyAllWindows()
 
+'''
+图像像素的算数操作
+'''
 def math_demo():
     image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
     cv.imshow("input",image)
