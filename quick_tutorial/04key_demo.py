@@ -5,7 +5,7 @@ import numpy as np
 '''
 
 def keys_demo():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     cv.namedWindow("input",cv.WINDOW_AUTOSIZE)
     cv.imshow("input", image)
     while True:

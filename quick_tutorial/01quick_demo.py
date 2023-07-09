@@ -5,7 +5,7 @@ import numpy as np
 图像色彩空间转换
 '''
 def color_space_demo():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
     hsv = cv.cvtColor(image,cv.COLOR_BGR2HSV)
 
@@ -18,7 +18,7 @@ def color_space_demo():
 图像对象的创建
 '''
 def mat_demo1():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     print(image.shape)
     blank = np.zeros_like(image)
     cv.imshow("blank", blank)
@@ -30,7 +30,7 @@ def mat_demo1():
 图像对象的赋值
 '''
 def mat_demo2():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     print(image.shape)
     roi = image[100:200,100:200,:]
     blank = np.zeros_like(image)
@@ -44,7 +44,7 @@ def mat_demo2():
 图像像素的读写操作
 '''
 def pixel_demo():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     cv.imshow("input",image)
     h,w,c = image.shape
     for row in range(h):
@@ -59,7 +59,7 @@ def pixel_demo():
 图像像素的算数操作
 '''
 def math_demo():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     cv.imshow("input",image)
     h,w,c = image.shape
     blank = np.zeros_like(image)

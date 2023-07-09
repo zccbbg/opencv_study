@@ -7,7 +7,7 @@ def nothing(x):
     print(x)
 
 def adjust_lightness_demo():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    image = cv.imread("../images/test.jpg")
     cv.namedWindow("input",cv.WINDOW_AUTOSIZE)
     cv.createTrackbar("lightness","input",0,100,nothing)
     cv.imshow("input", image)

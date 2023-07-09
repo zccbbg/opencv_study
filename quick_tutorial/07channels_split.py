@@ -5,7 +5,7 @@ import numpy as np
 通道分离与合并
 '''
 def demo():
-    b1 = cv.imread("C:/Users/zccbbg/Pictures/400.png")
+    b1 = cv.imread("../images/test.jpg")
     print(b1.shape)
     cv.imshow("input",b1)
     b2 = b1[:,:,1]
@@ -32,7 +32,7 @@ def demo():
 而 当三个通道d值相同时，则为灰度图。
 '''
 def split():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png");  # 读取要处理的图片
+    image = cv.imread("../images/test.jpg");  # 读取要处理的图片
     B, G, R = cv.split(image);  # 分离出图片的B，R，G颜色通道
     cv.imshow("RED", R);  # 显示三通道的值都为R值时d图片
     cv.imshow("GREEN", G);  # 显示三通道的值都为G值时d图片
@@ -43,7 +43,7 @@ def split():
 下面将使用merge（）函数将某一颜色通道（如R）与零矩阵合并，形成（R，0，0）从而显示只有红色通道的图
 '''
 def merge():
-    image = cv.imread("C:/Users/zccbbg/Pictures/400.png");  # 读取要处理的图片
+    image = cv.imread("../images/test.jpg");  # 读取要处理的图片
     B, G, R = cv.split(image);  # 分离出图片的B，R，G颜色通道
     zeros = np.zeros(image.shape[:2], dtype="uint8");  # 创建与image相同大小的零矩阵
     cv.imshow("BLUE", cv.merge([B, zeros, zeros]));  # 显示 （B，0，0）图像
