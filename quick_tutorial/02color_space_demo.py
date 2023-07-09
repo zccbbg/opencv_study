@@ -3,6 +3,9 @@ import numpy as np
 
 '''
 图像色彩空间转换
+
+cvtColor()函数是opencv里的颜色空间转换函数，可以实现RGB颜色向HSV，HSI等颜色空间的转换，也可以转换成灰度图像。
+
 HSV颜色模型
 HSV(Hue, Saturation, Value)是根据颜色的直观特性由A. R. Smith在1978年创建的一种颜色空间, 也称六角锥体模型(Hexcone Model)。
 这个模型中颜色的参数分别是：色调（H），饱和度（S），亮度（V）。
