@@ -16,8 +16,8 @@ https://blog.csdn.net/qinglongzhan/article/details/107213767
 '''
 def color_space_demo():
     image = cv.imread("../images/test.jpg")
-    gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY)
-    hsv = cv.cvtColor(image,cv.COLOR_BGR2HSV)
+    gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY) #将加载的彩色图像转换为灰度图像
+    hsv = cv.cvtColor(image,cv.COLOR_BGR2HSV) #将加载的彩色图像转换为HSV颜色空间
 
     cv.imshow("gray",gray)
     cv.imshow("hsv",hsv)

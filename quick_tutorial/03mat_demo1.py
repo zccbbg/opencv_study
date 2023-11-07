@@ -21,6 +21,10 @@ array([ 0., 0., 0.])
 def mat_demo1():
     image = cv.imread("../images/test.jpg")
     print(image.shape)
+    '''
+    创建一个和加载的图像image具有相同形状的全黑图像
+    np.zeros_like函数会生成一个与输入图像相同尺寸的全零矩阵，用于存储在变量blank中
+    '''
     blank = np.zeros_like(image)
     cv.imshow("blank", blank)
     cv.imshow("image", image)
