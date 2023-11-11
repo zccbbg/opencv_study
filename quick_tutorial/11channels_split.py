@@ -6,6 +6,7 @@ import numpy as np
 '''
 def demo():
     b1 = cv.imread("../images/test.jpg")
+    # 这一行代码打印加载的图像b1的形状，其中shape包括高度、宽度和通道数。这可以帮助你了解图像的尺寸和通道信息
     print(b1.shape)
     cv.imshow("input",b1)
     b2 = b1[:,:,1]
