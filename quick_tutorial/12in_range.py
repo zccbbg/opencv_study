@@ -14,7 +14,9 @@ hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 lower = np.array([0, 0, 0])
 upper = np.array([255, 255, 255])
 
-# 提取颜色范围内的像素点
+'''
+根据设定的颜色范围，在HSV图像中提取符合条件的像素点，生成一个二值掩码（mask），其中符合条件的像素值被设为255，不符合条件的像素值被设为0。
+'''
 mask = cv2.inRange(hsv, lower, upper)
 
 # 显示结果

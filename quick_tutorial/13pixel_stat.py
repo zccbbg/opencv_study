@@ -21,6 +21,11 @@ def demo():
     b1 = cv.imread("../images/test.jpg")
     print(b1.shape)
     cv.imshow("input",b1)
+    '''
+    使用cv.meanStdDev函数计算图像的均值和标准差。
+    means返回一个包含各通道均值的NumPy数组
+    dev返回一个包含各通道标准差的NumPy数组。
+    '''
     means,dev = cv.meanStdDev(b1)
     print(means,"dev:",dev)
     cv.waitKey(0)
