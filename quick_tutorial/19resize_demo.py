@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 
 '''
+作用是加载一张图像，将其缩小为原始尺寸的 75% 并显示在窗口中。
 图像的缩放与插值
 src	【必需】原图像
 dsize	【必需】输出图像所需大小
@@ -17,8 +18,16 @@ cv.INTER_AREA	使用像素区域关系重新采样。它可能是图像抽取的
 
 def demo():
     image = cv.imread("../images/test.jpg")
-    h,w,c = image.shape
     cv.namedWindow("resize",cv.WINDOW_AUTOSIZE)
+    '''
+    使用OpenCV的cv.resize函数对图像进行缩放。具体来说：
+
+    image 是要缩放的原始图像。
+    (0, 0) 表示输出图像的大小，如果为 (0, 0)，则根据缩放因子自动计算输出大小。
+    fx=0.75 表示在水平方向（宽度）上的缩放因子为 0.75。
+    fy=0.75 表示在垂直方向（高度）上的缩放因子为 0.75。
+    interpolation=cv.INTER_NEAREST 表示使用最近邻插值方法进行缩放。
+    '''
     dst= cv.resize(image,(0,0),fx=0.75,fy=0.75,interpolation=cv.INTER_NEAREST)
     cv.imshow("resize",dst)
     cv.waitKey(0)
