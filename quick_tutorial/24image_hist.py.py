@@ -19,7 +19,7 @@ def demo():
         '''
         hist = cv.calcHist([image], [i], None, [32], [0, 256])
         print(hist)
-        # 将直方图数据绘制为折线图。
+        # 使用 Matplotlib 库的 plot 函数绘制直方图数据。color=color 指定线条的颜色。
         plt.plot(hist, color=color)
         # 设置x轴的显示范围，即bin数的范围。
         plt.xlim([0, 32])
