@@ -9,12 +9,12 @@ model_bin = "../models/face_detector/opencv_face_detector_uint8.pb"
 config_text = "../models/face_detector/opencv_face_detector.pbtxt";
 def demo():
     net = cv.dnn.readNetFromTensorflow(model=model_bin, config=config_text)
-    cap = cv.VideoCapture("自己找个有人脸的视频")
+    cap = cv.VideoCapture("../images/test.mp4")
     while True:
         ret, frame = cap.read()
-        h, w, c = frame.shape
         if ret is not True:
             break
+        h, w, c = frame.shape
         # NCHW
         blob = cv.dnn.blobFromImage(frame, 1.0, (300, 300), (104.0, 177.0, 123.0), False, False)
         net.setInput(blob)
@@ -26,7 +26,7 @@ def demo():
                 top = detection[4] * h
                 right = detection[5] * w
                 bottom = detection[6] * h
-                cv.rectangle(frame, (np.int(left), np.int(top)), (np.int(right), np.int(bottom)), (0, 0, 255), 2, 8, 0)
+                cv.rectangle(frame, (int(left), int(top)), (int(right), int(bottom)), (0, 0, 255), 2, 8, 0)
         cv.imshow("frame", frame)
         c = cv.waitKey(1)
         if c == 27:
