@@ -1,10 +1,15 @@
 # about
-## 课程介绍
-本项目是跟着贾志刚老师的课程边学边敲。
+## notes
+[notes](notes)为跟着黑马的视频敲的笔记
+https://www.bilibili.com/video/BV1Fo4y1d7JL
 
-## B站视频学习
+[heima_opencv_notes](heima_opencv_notes)为黑马老师自己整理的笔记。
+
+## quick_tutorial
+[quick_tutorial](quick_tutorial)目录为跟着贾志刚老师的课程边学边敲。
 贾志刚老师录制了30课时的OPenCV4 python版本的免费视频，在B站
 提供给大家免费学习，需要直接点击下面地址即可
+
 OpenCV4.x  python快速入门视频教程
 https://www.bilibili.com/video/BV1hM4y1M7vQ
 
