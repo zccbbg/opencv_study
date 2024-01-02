@@ -1,6 +1,6 @@
 # about
-## notes
-[notes](notes)为跟着黑马的视频敲的笔记
+## 黑马
+跟着黑马的视频敲的笔记:
 https://www.bilibili.com/video/BV1Fo4y1d7JL
 
 [heima_opencv_notes](heima_opencv_notes)为黑马老师自己整理的笔记。
@@ -12,6 +12,171 @@ https://www.bilibili.com/video/BV1Fo4y1d7JL
 
 OpenCV4.x  python快速入门视频教程
 https://www.bilibili.com/video/BV1hM4y1M7vQ
+
+# 图像处理简介
+## 灰度图像
+● 灰度图像是由灰度级组成的图像，每个像素的灰度级表示图像中的亮度。通常，灰度级在0到255之间，其中0表示黑色，255表示白色。
+● 在灰度图像中，每个像素都有一个单一的数值，表示该像素的亮度。因此，灰度图像是单通道图像。
+## 二值图像
+不是黑就是白
+二值图像是一种特殊的灰度图像，其中每个像素只能取两个值，通常是0或1。这两个值通常分别代表黑色和白色，或者表示某种特定的目标和背景。
+## 彩色图
+彩色图像是一种图像表示方式，它包含了多个颜色通道的信息，相对于灰度图像而言，彩色图像能够更真实地表达物体的颜色。彩色图像通常用于涉及色彩信息的图像处理、计算机视觉和图形学等领域。
+
+常见的彩色图像有三种基本颜色通道，即红色（R，代表Red）、绿色（G，代表Green）、蓝色（B，代表Blue），这种颜色模型被称为RGB颜色模型。在RGB颜色模型中，每个像素由这三个颜色通道的数值组成，形成一个三维的颜色空间。通过不同的组合，可以生成各种颜色。
+
+除了RGB颜色模型，还有其他颜色模型，如CMYK（青、品红、黄、黑）用于印刷领域，HSV（色调、饱和度、明度）用于颜色的直观表示等。
+
+彩色图像相对于灰度图像具有更丰富的信息，可以提供更多关于场景的细节，这对于许多应用是至关重要的。在计算机视觉任务中，彩色信息通常用于物体识别、图像分割等，而在图形学中，彩色图像则用于渲染真实感图像。
+
+# opencv 介绍
+OpenCV（Open Source Computer Vision Library）是一个开源的计算机视觉库，提供了许多用于图像处理和计算机视觉的功能和工具。以下是一些常见的OpenCV模块：
+
+1. **Core 模块（core）**：提供基本的数据结构、算法和功能，如图像的读取、写入、操作等。
+
+2. **Imgproc 模块（imgproc）**：包含图像处理函数，如图像平滑、边缘检测、图像变换等。
+
+3. **HighGUI 模块（highgui）**：用于创建简单的用户界面，包括图像显示窗口、滑动条等。
+
+4. **Video 模块（video）**：包含视频处理相关的功能，如视频捕捉、视频编解码等。
+
+5. **Calib3d 模块（calib3d）**：用于相机标定、三维重建和相机姿态估计等计算机视觉任务。
+
+6. **Features2d 模块（features2d）**：提供了特征检测和描述子提取的函数，如SIFT、SURF、ORB等。
+
+7. **Objdetect 模块（objdetect）**：包含用于目标检测的功能，如Haar级联分类器。
+
+8. **Videoio 模块（videoio）**：用于读写视频文件和摄像头数据的功能。
+
+9. **ML 模块（ml）**：提供机器学习相关的功能，包括支持向量机（SVM）和k最近邻（k-NN）等。
+
+10. **Flann 模块（flann）**：用于快速最近邻搜索的库。
+
+11. **Dnn 模块（dnn）**：包含深度学习模型的功能，可以用于加载和运行深度学习模型。
+
+12. **Photo 模块（photo）**：提供了一些图像编辑和修复的工具，如色彩校正和图像修复。
+
+13. **Stitching 模块（stitching）**：用于图像拼接和全景图像创建的功能。
+
+14. **Shape 模块（shape）**：包含形状分析和匹配的函数。
+
+# 图像基础操作
+## 图像读取与显示
+```python
+import cv2 as cv
+# 以灰度图的形式读取图像
+img = cv.imread('../images/test.jpg',0)
+cv.imshow('img',img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+```
+读取方式的标志
+cv.IMREAD*COLOR：以彩色模式加载图像，任何图像的透明度都将被忽略。这是默认参数。
+
+cv.IMREAD*GRAYSCALE：以灰度模式加载图像
+
+cv.IMREAD_UNCHANGED：包括alpha通道的加载图像模式。
+
+**可以使用1、0或者-1来替代上面三个标志**
+
+## 绘制几何图形
+cv.line(): 绘制直线
+
+cv.circle(): 绘制圆形
+
+cv.rectangle(): 绘制矩形
+
+cv.putText(): 在图像上添加文字
+```python
+import numpy as np
+import cv2 as cv
+import matplotlib.pyplot as plt
+# 1 创建一个空白的图像
+img = np.zeros((512,512,3), np.uint8)
+# 2 绘制图形
+cv.line(img,(0,0),(511,511),(255,0,0),5)
+cv.rectangle(img,(384,0),(510,128),(0,255,0),3)
+cv.circle(img,(447,63), 63, (0,0,255), -1)
+font = cv.FONT_HERSHEY_SIMPLEX
+cv.putText(img,'OpenCV',(10,500), font, 4,(255,255,255),2,cv.LINE_AA)
+# 3 图像展示
+plt.imshow(img[:,:,::-1])
+plt.title('匹配结果'), plt.xticks([]), plt.yticks([])
+plt.show()
+```
+## 图像的属性
+![img.png](images%2Fimg.png)
+
+## 其他操作
+直接使用行列索引获取图像中的像素并进行修改
+
+拆分通道：cv.split()
+
+通道合并：cv.merge()
+
+色彩空间的改变： cv.cvtColor(input_image，flag)
+
+## 算数操作
+### 加法
+你可以使用OpenCV的cv.add()函数把两幅图像相加，或者可以简单地通过numpy操作添加两个图像，如res = img1 + img2。两个图像应该具有相同的大小和类型，或者第二个图像可以是标量值。
+
+_**注意：OpenCV加法和Numpy加法之间存在差异。OpenCV的加法是饱和操作，而Numpy添加是模运算。**_
+
+**_注意：这里都要求两幅图像是相同大小的。_**
+
+参考以下代码：
+```
+>>> x = np.uint8([250])
+>>> y = np.uint8([10])
+>>> print( cv.add(x,y) ) # 250+10 = 260 => 255
+[[255]]
+>>> print( x+y )          # 250+10 = 260 % 256 = 4
+[4]
+```
+### 混合
+将两幅图像按照不同的比例进行混合
+注意：这里都要求两幅图像是相同大小的。
+```commandline
+import numpy as np
+import cv2 as cv
+import matplotlib.pyplot as plt
+
+# 1 读取图像
+img1 = cv.imread("view.jpg")
+img2 = cv.imread("rain.jpg")
+
+# 2 图像混合
+img3 = cv.addWeighted(img1,0.7,img2,0.3,0)
+
+# 3 图像显示
+plt.figure(figsize=(8,8))
+plt.imshow(img3[:,:,::-1])
+plt.show()
+```
+## 图像色彩空间转换
+cvtColor()函数是opencv里的颜色空间转换函数，可以实现RGB颜色向HSV，HSI等颜色空间的转换，也可以转换成灰度图像。
+
+HSV颜色模型
+HSV(Hue, Saturation, Value)是根据颜色的直观特性由A. R. Smith在1978年创建的一种颜色空间, 也称六角锥体模型(Hexcone Model)。
+这个模型中颜色的参数分别是：色调（H），饱和度（S），亮度（V）。
+色调H：用角度度量，取值范围为0°～360°，从红色开始按逆时针方向计算，红色为0°，绿色为120°,蓝色为240°。它们的补色是：黄色为60°，青色为180°,品红为300°；
+饱和度S：取值范围为0.0～1.0；
+亮度V：取值范围为0.0(黑色)～1.0(白色)。
+
+```python
+def color_space_demo():
+    image = cv.imread("../images/test.jpg")
+    gray = cv.cvtColor(image,cv.COLOR_BGR2GRAY) #将加载的彩色图像转换为灰度图像
+    hsv = cv.cvtColor(image,cv.COLOR_BGR2HSV) #将加载的彩色图像转换为HSV颜色空间
+
+    cv.imshow("gray",gray)
+    cv.imshow("hsv",hsv)
+    cv.waitKey(0)
+    cv.destroyAllWindows()
+
+if __name__ == '__main__':
+    color_space_demo()
+```
 
 # 一些基础概念
 ## HSV颜色空间
